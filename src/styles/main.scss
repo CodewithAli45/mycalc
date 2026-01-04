@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Dancing+Script:wght@700&display=swap");
 
 :root {
-  --primary-color: #1a3c6e;
-  --secondary-color: #2c5282;
+  --primary-color: #1a4346;
+  --secondary-color: #163d3a;
   --accent-color: #f6ad55;
   --text-color: #ffffff;
   --bg-color: #1a202c;
-  --key-bg: #e2e8f0;
+  --key-bg: #8c9197;
   --key-text: #000000;
   --operator-bg: #bee3f8;
   --equals-bg: #48bb78;
@@ -63,6 +63,10 @@ body {
     display: flex;
     align-items: center;
     color: white;
+  }
+  .clock{
+    font-size: 1.25rem;
+    font-weight: 500;
   }
 }
 

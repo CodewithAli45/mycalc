@@ -3,14 +3,16 @@ import { create, all } from 'mathjs';
 const config = { };
 const math = create(all, config);
 
-export const evaluateExpression = (expression) => {
+export const evaluateExpression = (expression, scope = {}) => {
   try {
     // Replace visual operators with mathjs operators
     const sanitized = expression
       .replace(/x/g, '*')
-      .replace(/÷/g, '/');
+      .replace(/÷/g, '/')
+      .replace(/√(\d+(?:\.\d+)?|\([^)]+\))/g, 'sqrt($1)')
+      .replace(/%/g, '/100');
     
-    return math.evaluate(sanitized);
+    return math.evaluate(sanitized, scope);
   } catch (error) {
     console.error("Calculation Error:", error);
     return "Error";
