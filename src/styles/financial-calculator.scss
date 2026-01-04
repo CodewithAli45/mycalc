@@ -1,0 +1,73 @@
+.financial {
+  color: white;
+
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: var(--key-bg);
+      border-radius: 8px;
+      cursor: pointer;
+
+      &.active {
+        background: var(--accent-color);
+        color: white;
+      }
+    }
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      label {
+        font-size: 0.9rem;
+        color: #cbd5e0;
+      }
+
+      input {
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        font-size: 1rem;
+      }
+    }
+
+    .calc-btn {
+      margin-top: 10px;
+      padding: 12px;
+      background: var(--equals-bg);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  .result-area {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+    
+    pre {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.2rem;
+      font-weight: bold;
+      white-space: pre-wrap;
+      text-align: center;
+    }
+  }
+}

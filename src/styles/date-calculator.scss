@@ -1,0 +1,70 @@
+.date-calc {
+  color: white;
+
+  .mode-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      background: var(--key-bg);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: black;
+      font-weight: 500;
+
+      &.active {
+        background: var(--accent-color);
+        color: white;
+      }
+    }
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      label {
+        font-size: 0.9rem;
+        color: #ccd6e0;
+      }
+
+      input {
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        font-size: 1rem;
+        background: white;
+      }
+    }
+  }
+
+  .result-area {
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: #ccd6e0;
+    }
+
+    .result-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+  }
+}

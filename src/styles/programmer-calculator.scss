@@ -1,0 +1,44 @@
+.programmer {
+  max-width: 500px;
+}
+
+.radix-displays {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+
+  .radix-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: monospace;
+    color: #a0aec0;
+
+    &.active {
+      background-color: rgba(66, 153, 225, 0.2);
+      color: #fff;
+      border-left: 3px solid var(--accent-color);
+    }
+  }
+}
+
+.current-input-large {
+  font-size: 2.5rem;
+  text-align: right;
+  color: white;
+  margin-bottom: 20px;
+  font-family: monospace;
+}
+
+.programmer-grid {
+  grid-template-columns: repeat(4, 1fr);
+  
+  .key:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}

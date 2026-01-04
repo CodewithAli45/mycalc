@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Dancing+Script:wght@700&display=swap");
+
+:root {
+  --primary-color: #1a3c6e;
+  --secondary-color: #2c5282;
+  --accent-color: #f6ad55;
+  --text-color: #ffffff;
+  --bg-color: #1a202c;
+  --key-bg: #e2e8f0;
+  --key-text: #000000;
+  --operator-bg: #bee3f8;
+  --equals-bg: #48bb78;
+  --equals-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.app-header {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 10;
+  
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--secondary-color); /* To match image bg */
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #a0aec0;
+  background-color: var(--primary-color);
+
+  .signature {
+    font-family: 'Dancing Script', cursive;
+    color: var(--accent-color); /* Gold/Yellowish */
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin-bottom: 0.25rem;
+  }
+}

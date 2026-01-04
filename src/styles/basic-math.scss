@@ -1,0 +1,66 @@
+.basic-math {
+  color: white;
+
+  .op-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: var(--key-bg);
+      cursor: pointer;
+
+      &.active {
+        background: var(--accent-color);
+        color: white;
+      }
+    }
+  }
+
+  .inputs-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    input {
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1.1rem;
+    }
+
+    .calc-btn {
+      margin-top: 10px;
+      padding: 12px;
+      background: var(--equals-bg);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  .result-area {
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #cbd5e0;
+    }
+
+    .val {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
+}

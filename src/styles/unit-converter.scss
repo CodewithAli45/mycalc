@@ -1,0 +1,78 @@
+.unit-converter {
+  max-width: 500px;
+  color: white;
+
+  .category-selector {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    
+    button {
+      white-space: nowrap;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: #cbd5e0;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &.active {
+        background: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+      }
+    }
+  }
+
+  .conversion-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 12px;
+
+    .equals-sign {
+      text-align: center;
+      font-size: 2rem;
+      color: #a0aec0;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      label {
+        font-size: 0.9rem;
+        color: #a0aec0;
+      }
+
+      input, .result-display {
+        background: white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 1.5rem;
+        color: black;
+      }
+
+      .result-display {
+        background: #e2e8f0;
+        min-height: 52px;
+        display: flex;
+        align-items: center;
+      }
+
+      select {
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        font-size: 1rem;
+      }
+    }
+  }
+}

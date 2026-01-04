@@ -1,0 +1,12 @@
+.scientific {
+  max-width: 600px; /* Wider for scientific */
+}
+
+.scientific-grid {
+  grid-template-columns: repeat(6, 1fr); /* More columns */
+  
+  .key {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}

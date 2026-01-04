@@ -1,0 +1,40 @@
+.graphing {
+  width: 100%;
+  max-width: 600px;
+  color: white;
+
+  .input-area {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+
+    label {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
+
+  .chart-container {
+    background: rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
