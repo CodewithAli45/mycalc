@@ -1,12 +1,121 @@
 .scientific {
   max-width: 600px; /* Wider for scientific */
+  
+
+  .display-screen {
+    background-color: #e99a9a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px;
+    min-height: 160px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    color: black;
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      opacity: 0.7;
+
+      .mode-badge {
+        padding: 2px 8px;
+        border-radius: 4px;
+        background: rgba(0,0,0,0.1);
+        &.deg { color: #074d24; font-weight: bold; }
+        &.rad { color: #2d3748; }
+      }
+    }
+
+    .expression-row {
+      font-size: 1.6rem;
+      text-align: right;
+      word-wrap: break-word;
+      margin: 10px 0;
+      opacity: 0.9;
+    }
+
+    .result-row {
+      font-size: 2.2rem;
+      text-align: right;
+      font-weight: bold;
+      
+      &.live {
+        color: #4a5568; 
+        font-size: 1.8rem;
+        font-style: italic;
+      }
+
+      &.final {
+        color: #000000; /* Dark color for final */
+      }
+    }
+  }
 }
 
 .scientific-grid {
-  grid-template-columns: repeat(6, 1fr); /* More columns */
-  
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+
   .key {
     font-size: 1rem;
-    padding: 10px 0;
+    padding: 12px 0;
+    border-radius: 8px;
+    background: #e2e8f0;
+    color: #1a202c;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+
+    &:hover { background: #cbd5e0; }
+
+    &.key-equals {
+      background: #48bb78;
+      grid-column: span 1;
+      color: white;
+      &:hover { background: #38a169; }
+    }
+
+    &.key-action {
+      background: #f56565;
+      color: white;
+      &:hover { background: #e53e3e; }
+    }
+
+    &.deg-active {
+      background: #48bb78 !important; /* Green */
+      color: white;
+    }
+    
+    &.rad-active {
+      background: var(--accent-color) !important;
+      color: white;
+    }
+  }
+  
+}
+
+.mode {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-right: 5px;
+  
+  &.active {
+    color: #074d24;
+    background: rgba(72, 187, 120, 0.2);
+    font-weight: bold;
+    border: 1px solid rgba(72, 187, 120, 0.3);
+  }
+}
+
+.key {
+  &.deg-active, &.rad-active {
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
   }
 }

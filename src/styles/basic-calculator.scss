@@ -1,6 +1,6 @@
 .calculator-wrapper {
   background-color: #4b4a47; /* Frame color */
-  padding: 15px; /* Frame thickness */
+  padding: 10px; /* Frame thickness */
   border-radius: 20px;
   width: 100%;
   max-width: 400px;
@@ -14,7 +14,7 @@
 .display-screen {
   background-color: #e6e3e3;
   border-radius: 10px;
-  padding: 15px;
+  padding: 10px;
   min-height: 150px;
   display: flex;
   flex-direction: column;
