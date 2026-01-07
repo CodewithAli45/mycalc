@@ -62,12 +62,35 @@
     padding: 20px;
     border-radius: 10px;
     
-    pre {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.2rem;
-      font-weight: bold;
-      white-space: pre-wrap;
-      text-align: center;
+    .result-details {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 25px;
+
+      .res-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 8px;
+
+        .label { color: #a0aec0; font-size: 0.9rem; }
+        .val { 
+          font-size: 1.3rem; 
+          font-weight: bold;
+          &.danger { color: #f56565; }
+        }
+      }
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
     }
   }
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { create, all } from 'mathjs';
+import MathTest from '../components/MathTest';
 import '../styles/basic-math.scss';
 
 const math = create(all);
@@ -8,21 +9,17 @@ export default function BasicMath() {
   const [inputs, setInputs] = useState(['', '']);
   const [result, setResult] = useState('');
   const [operation, setOperation] = useState('GCD');
+  const [isTestMode, setIsTestMode] = useState(false);
 
   const operations = {
     GCD: (vals) => math.gcd(...vals),
     LCM: (vals) => math.lcm(...vals),
     'Prime Factors': (val) => {
-      // Simple implementation or use basic math logic
-      // mathjs doesn't strictly have a "prime factors" list function built-in readily in basic set?
-      // Actually let's use a custom simplistic one or just standard helpers checking divisibility
-      // For now, let's implement checking if prime
       return math.isPrime(val) ? 'Prime' : 'Composite';
     }
   };
 
   const calculate = () => {
-
     try {
       const vals = inputs.map(i => parseInt(i) || 0);
       if (operation === 'Prime Factors') {
@@ -43,9 +40,23 @@ export default function BasicMath() {
     setInputs(newInputs);
   };
 
+  if (isTestMode) {
+    return (
+      <div className="calculator-wrapper basic-math">
+        <MathTest onCancel={() => setIsTestMode(false)} />
+      </div>
+    );
+  }
+
   return (
     <div className="calculator-wrapper basic-math">
       <div className="op-buttons">
+        <button 
+          className={isTestMode ? 'active' : ''}
+          onClick={() => setIsTestMode(true)}
+        >
+          Test
+        </button>
         {Object.keys(operations).map(op => (
           <button 
             key={op} 
