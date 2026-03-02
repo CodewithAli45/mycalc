@@ -9,8 +9,10 @@ export const evaluateExpression = (expression, scope = {}) => {
     const sanitized = expression
       .replace(/x/g, '*')
       .replace(/÷/g, '/')
-      .replace(/√(\d+(?:\.\d+)?|\([^)]+\))/g, 'sqrt($1)')
-      .replace(/%/g, '/100');
+      .replace(/√\(([^)]+)\)/g, 'sqrt($1)')
+      .replace(/√(\d+(?:\.\d+)?)/g, 'sqrt($1)')
+      .replace(/(\d+(?:\.\d+)?)%/g, '($1/100)')
+      .replace(/\s+/g, '');
     
     return math.evaluate(sanitized, scope);
   } catch (error) {

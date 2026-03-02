@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { differenceInDays, addDays, format, differenceInWeeks, differenceInMonths, differenceInYears } from 'date-fns';
+import { differenceInDays, addDays, format } from 'date-fns';
 import '../styles/date-calculator.scss';
 
 export default function DateCalc() {
@@ -7,6 +7,17 @@ export default function DateCalc() {
   const [date1, setDate1] = useState(format(new Date(), 'yyyy-MM-dd'));
   const [date2, setDate2] = useState(format(new Date(), 'yyyy-MM-dd'));
   const [daysToAdd, setDaysToAdd] = useState(0);
+
+  const handleDateClick = (inputId) => {
+    const input = document.getElementById(inputId);
+    if (input) {
+      if (typeof input.showPicker === 'function') {
+        input.showPicker();
+      } else {
+        input.click();
+      }
+    }
+  };
 
   const calculateResults = () => {
     const d1 = new Date(date1);
@@ -37,22 +48,32 @@ export default function DateCalc() {
       <div className="inputs">
         <div className="input-group">
           <label>Start Date</label>
-          <div className="custom-date-wrapper">
+          <div className="custom-date-wrapper" onClick={() => handleDateClick('start-date')}>
             <span className="date-display">
               {format(new Date(date1), 'dd / MM / yyyy')}
             </span>
-            <input type="date" value={date1} onChange={(e) => setDate1(e.target.value)} />
+            <input 
+              id="start-date"
+              type="date" 
+              value={date1} 
+              onChange={(e) => setDate1(e.target.value)} 
+            />
           </div>
         </div>
 
         {mode === 'diff' ? (
           <div className="input-group">
             <label>End Date</label>
-            <div className="custom-date-wrapper">
+            <div className="custom-date-wrapper" onClick={() => handleDateClick('end-date')}>
               <span className="date-display">
                 {format(new Date(date2), 'dd / MM / yyyy')}
               </span>
-              <input type="date" value={date2} onChange={(e) => setDate2(e.target.value)} />
+              <input 
+                id="end-date"
+                type="date" 
+                value={date2} 
+                onChange={(e) => setDate2(e.target.value)} 
+              />
             </div>
           </div>
         ) : (

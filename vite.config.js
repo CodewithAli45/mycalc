@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg', 'calculator_icon.png'],
       manifest: {
         name: 'My Calc',
         short_name: 'MyCalc',
@@ -26,6 +26,12 @@ export default defineConfig({
             src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
+          },
+          {
+            src: 'calculator_icon.png',
+            sizes: '1024x1024',
+            type: 'image/png',
+            purpose: 'any maskable'
           }
         ]
       }

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { evaluateExpression } from '../utils/calculatorEngine';
 import '../styles/scientific-calculator.scss';
 
 export default function ScientificCalc() {
   const [input, setInput] = useState('0');
-  const [liveResult, setLiveResult] = useState('');
   const [isDeg, setIsDeg] = useState(true);
   const [ans, setAns] = useState('0');
   const [isCalculated, setIsCalculated] = useState(false);
@@ -19,20 +18,13 @@ export default function ScientificCalc() {
       maximumFractionDigits: 6
     });
   };
-
-  useEffect(() => {
-    if (input === '0') {
-      setLiveResult('');
-      return;
-    }
+  const liveResult = React.useMemo(() => {
+    if (input === '0') return '';
 
     try {
       const hasOperator = /[+\-*/%^]/.test(input) || /(sin|cos|tan|log|ln|sqrt|exp|mod)/.test(input);
       
-      if (!hasOperator) {
-        setLiveResult('');
-        return;
-      }
+      if (!hasOperator) return '';
 
       let expr = input
         .replace(/π/g, 'pi')
@@ -43,19 +35,17 @@ export default function ScientificCalc() {
 
       const res = evaluateExpression(expr);
       if (res !== 'Error' && res !== undefined && res.toString() !== input) {
-        setLiveResult(res.toString());
-      } else {
-        setLiveResult('');
+        return res.toString();
       }
+      return '';
     } catch {
-      setLiveResult('');
+      return '';
     }
   }, [input, isDeg, ans]);
 
   const handlePress = (val) => {
     if (val === 'AC') {
       setInput('0');
-      setLiveResult('');
       setIsCalculated(false);
     } else if (val === 'DEL') {
       setInput(input.length > 1 ? input.slice(0, -1) : '0');

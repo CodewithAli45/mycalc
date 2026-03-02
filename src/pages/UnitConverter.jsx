@@ -12,7 +12,7 @@ try {
     katha: '720 sqft',
     bigha: '14400 sqft'
   });
-} catch (e) {
+} catch {
   // Unit may already exist if component re-renders/is updated during dev
 }
 
