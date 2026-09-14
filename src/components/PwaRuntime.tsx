@@ -1,17 +1,31 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useSyncExternalStore } from "react"
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>
 }
 
+const subscribeOnline = (cb: () => void) => {
+  window.addEventListener("online", cb)
+  window.addEventListener("offline", cb)
+  return () => {
+    window.removeEventListener("online", cb)
+    window.removeEventListener("offline", cb)
+  }
+}
+
+const getOnlineSnapshot = () => navigator.onLine
+const getOnlineServerSnapshot = () => true
+
 export default function PwaRuntime() {
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const [installed, setInstalled] = useState(false)
-  const [online, setOnline] = useState<boolean>(() =>
-    typeof navigator !== "undefined" ? navigator.onLine : true
+  const online = useSyncExternalStore(
+    subscribeOnline,
+    getOnlineSnapshot,
+    getOnlineServerSnapshot
   )
 
   useEffect(() => {
@@ -29,17 +43,11 @@ export default function PwaRuntime() {
       setInstallPrompt(null)
       setInstalled(true)
     }
-    const onOnline = () => setOnline(true)
-    const onOffline = () => setOnline(false)
     window.addEventListener("beforeinstallprompt", onPrompt)
     window.addEventListener("appinstalled", onInstalled)
-    window.addEventListener("online", onOnline)
-    window.addEventListener("offline", onOffline)
     return () => {
       window.removeEventListener("beforeinstallprompt", onPrompt)
       window.removeEventListener("appinstalled", onInstalled)
-      window.removeEventListener("online", onOnline)
-      window.removeEventListener("offline", onOffline)
     }
   }, [])
 
@@ -52,6 +60,8 @@ export default function PwaRuntime() {
       setInstalled(true)
     }
   }, [installPrompt])
+
+  if (online === null) return null
 
   if (!installPrompt) {
     return (

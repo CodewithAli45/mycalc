@@ -66,14 +66,9 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-40 border-b border-slate-700/40 bg-[var(--bg-0)]/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-2 sm:px-6">
           <Clock />
-          <div className="hidden text-right sm:block">
-            <div className="text-sm font-bold tracking-tight text-slate-200">
-              Engineer&apos;s Dashboard
-            </div>
-            <div className="text-[11px] text-slate-500">Calculator Suite · Works Offline</div>
-          </div>
+          <div className="text-[11px] text-slate-500">Calculator Suite</div>
         </div>
         <nav className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="flex gap-1 overflow-x-auto pb-2 [-webkit-overflow-scrolling:touch]">
