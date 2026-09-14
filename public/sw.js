@@ -1,4 +1,4 @@
-const CACHE_NAME = "edash-v1"
+const CACHE_NAME = "edash-v2"
 const APP_SHELL = [
   "/",
   "/offline.html",

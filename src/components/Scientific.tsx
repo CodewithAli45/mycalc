@@ -114,7 +114,10 @@ export default function Scientific() {
   }
 
   const btn = (label: string, onPress: () => void, cls: string) => (
-    <button onClick={onPress} className={`btn rounded-xl py-4 text-lg font-semibold ${cls}`}>
+    <button
+      onClick={onPress}
+      className={`btn rounded-xl py-3 text-lg font-semibold ${cls}`}
+    >
       {label}
     </button>
   )
@@ -132,14 +135,14 @@ export default function Scientific() {
       cls
     )
 
-  return (
-    <div className="mx-auto w-full max-w-md">
+return (
+    <div className="mx-auto w-full max-w-sm lg:max-w-3xl">
       <div className="card p-4">
         <div className="mb-1 flex h-6 items-end justify-end">
           <span className="mono truncate text-xs text-slate-500">{live ?? "\u00a0"}</span>
         </div>
-        <div className="mb-4 flex h-14 items-center justify-end overflow-hidden rounded-xl border border-slate-700/50 bg-slate-900/60 px-4">
-          <span className="mono truncate text-right text-3xl font-bold text-slate-100">
+        <div className="mb-3 flex h-24 items-end justify-end overflow-hidden rounded-xl border border-slate-700/50 bg-slate-900/60 px-4 py-3 lg:h-32">
+          <span className="mono w-full truncate text-right text-5xl font-bold leading-none text-slate-100">
             {error ? (
               <span className="text-red-400">{error}</span>
             ) : (
@@ -172,19 +175,19 @@ export default function Scientific() {
         </div>
 
         <div className="mb-3 grid grid-cols-5 gap-2">
-            <button className="btn rounded-xl bg-violet-600 py-5 text-lg font-semibold text-white shadow-lg shadow-violet-500/20 hover:bg-violet-500" onClick={() => setSecondary((s) => !s)}>
+            <button className="btn rounded-xl bg-violet-600 py-3 text-lg font-semibold text-white shadow-lg shadow-violet-500/20 hover:bg-violet-500" onClick={() => setSecondary((s) => !s)}>
               2nd
             </button>
-            <button className="btn rounded-xl bg-slate-600/70 py-5 text-lg font-semibold text-slate-100 hover:bg-slate-500/70" onClick={() => insertText("π")}>
+            <button className="btn rounded-xl bg-slate-600/70 py-3 text-lg font-semibold text-slate-100 hover:bg-slate-500/70" onClick={() => insertText("π")}>
               π
             </button>
-            <button className="btn rounded-xl bg-slate-600/70 py-5 text-lg font-semibold text-slate-100 hover:bg-slate-500/70" onClick={() => insertText("e")}>
+            <button className="btn rounded-xl bg-slate-600/70 py-3 text-lg font-semibold text-slate-100 hover:bg-slate-500/70" onClick={() => insertText("e")}>
               e
             </button>
-            <button className="btn rounded-xl bg-red-500/90 py-5 text-lg font-semibold text-white shadow-lg shadow-red-500/20 hover:bg-red-500" onClick={clearAll}>
+            <button className="btn rounded-xl bg-red-500/90 py-3 text-lg font-semibold text-white shadow-lg shadow-red-500/20 hover:bg-red-500" onClick={clearAll}>
               AC
             </button>
-            <button className="btn rounded-xl bg-amber-500/90 py-5 text-lg font-semibold text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-500" onClick={backspace}>
+            <button className="btn rounded-xl bg-amber-500/90 py-3 text-lg font-semibold text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-500" onClick={backspace}>
               ⌫
             </button>
           </div>

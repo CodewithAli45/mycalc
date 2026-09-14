@@ -194,20 +194,20 @@ export default function Calculator() {
   const btn = (label: string, onPress: () => void, cls: string, wide = false) => (
     <button
       onClick={onPress}
-      className={`btn rounded-xl py-4 text-lg font-semibold ${cls} ${wide ? "col-span-2" : ""}`}
+      className={`btn rounded-xl py-3 text-lg font-semibold ${cls} ${wide ? "col-span-2" : ""}`}
     >
       {label}
     </button>
   )
 
   return (
-    <div className="mx-auto w-full max-w-sm">
+    <div className="mx-auto w-full max-w-sm lg:grid lg:max-w-4xl lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start lg:gap-6">
       <div className="card p-4">
         <div className="mb-1 flex h-6 items-end justify-end pr-1">
           <span className="mono truncate text-xs text-slate-500">{livePreview ?? "\u00a0"}</span>
         </div>
-        <div className="mb-4 flex h-14 items-center justify-end overflow-hidden rounded-xl border border-slate-700/50 bg-slate-900/60 px-4">
-          <span className="mono truncate text-right text-3xl font-bold text-slate-100">
+        <div className="mb-4 flex h-24 items-end justify-end overflow-hidden rounded-xl border border-slate-700/50 bg-slate-900/60 px-4 py-3 lg:h-32">
+          <span className="mono w-full truncate text-right text-5xl font-bold leading-none text-slate-100">
             {error ? <span className="text-red-400">{error}</span> : (toDisplay(expr) || "0")}
           </span>
         </div>
@@ -250,9 +250,9 @@ export default function Calculator() {
       </div>
 
       {history.length > 0 && (
-        <div className="card mt-4 p-4">
+        <div className="card mt-4 p-4 lg:mt-0">
           <h3 className="card-title mb-2 text-sm uppercase tracking-wide text-slate-400">
-            Recent
+            History
           </h3>
           <ul className="space-y-1">
             {history.map((h, i) => (
