@@ -191,6 +191,20 @@ export default function Calculator() {
     return () => window.removeEventListener("keydown", onKey)
   }, [pressDigit, pressOperator, pressPercent, pressEnter, pressBackspace, pressAns])
 
+  const display = error ? error : (toDisplay(expr) || "0")
+  const displayFontClass =
+    display.length <= 11
+      ? "text-5xl"
+      : display.length <= 15
+        ? "text-4xl"
+        : display.length <= 21
+          ? "text-3xl"
+          : display.length <= 30
+            ? "text-2xl"
+            : display.length <= 45
+              ? "text-xl"
+              : "text-lg"
+
   const btn = (label: string, onPress: () => void, cls: string, wide = false) => (
     <button
       onClick={onPress}
@@ -206,9 +220,11 @@ export default function Calculator() {
         <div className="mb-1 flex h-6 items-end justify-end pr-1">
           <span className="mono truncate text-xs text-slate-500">{livePreview ?? "\u00a0"}</span>
         </div>
-        <div className="mb-4 flex h-24 items-end justify-end overflow-hidden rounded-xl border border-slate-700/50 bg-slate-900/60 px-4 py-3 lg:h-32">
-          <span className="mono w-full truncate text-right text-5xl font-bold leading-none text-slate-100">
-            {error ? <span className="text-red-400">{error}</span> : (toDisplay(expr) || "0")}
+        <div className="mb-4 flex min-h-24 items-end justify-end overflow-hidden rounded-xl border border-slate-700/50 bg-slate-900/60 px-4 py-3 lg:min-h-32">
+          <span
+            className={`mono line-clamp-2 w-full break-all text-right font-bold leading-tight text-slate-100 ${displayFontClass}`}
+          >
+            {error ? <span className="text-red-400">{error}</span> : display}
           </span>
         </div>
 

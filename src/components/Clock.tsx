@@ -103,7 +103,7 @@ export default function Clock() {
       <button
         ref={toggleRef}
         onClick={() => (open ? closeCalendar() : openCalendar())}
-        className="group flex w-full items-center gap-4 sm:gap-6"
+        className="group flex items-center justify-center gap-4 sm:gap-6"
         aria-label="Open calendar"
       >
         <div className="flex flex-col items-start leading-none">
