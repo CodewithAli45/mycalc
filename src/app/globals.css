@@ -1,16 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --bg-0: #0b0f17;
-  --bg-1: #111827;
-  --bg-2: #1a2233;
-  --bg-3: #232d42;
-  --accent: #38bdf8;
+  --bg-0: #0e1414;
+  --bg-1: #151e1d;
+  --bg-2: #1c2927;
+  --bg-3: #2a3936;
+  --accent: #2dd4bf;
   --accent-2: #a78bfa;
   --accent-3: #34d399;
-  --text-0: #f1f5f9;
-  --text-1: #94a3b8;
-  --text-2: #64748b;
+  --text-0: #f4f7f6;
+  --text-1: #96a6a2;
+  --text-2: #748480;
+
+  /* Retheme Tailwind's slate and sky utilities used throughout the app. */
+  --color-slate-50: #f4f7f6;
+  --color-slate-100: #e8efed;
+  --color-slate-200: #d2dcda;
+  --color-slate-300: #b8c6c2;
+  --color-slate-400: #96a6a2;
+  --color-slate-500: #748480;
+  --color-slate-600: #53635f;
+  --color-slate-700: #354441;
+  --color-slate-800: #263330;
+  --color-slate-900: #1a2423;
+  --color-slate-950: #111918;
+
+  --color-sky-50: #f0fdfa;
+  --color-sky-100: #ccfbf1;
+  --color-sky-200: #99f6e4;
+  --color-sky-300: #5eead4;
+  --color-sky-400: #2dd4bf;
+  --color-sky-500: #14b8a6;
+  --color-sky-600: #0d9488;
+  --color-sky-700: #0f766e;
+  --color-sky-800: #115e59;
+  --color-sky-900: #134e4a;
+  --color-sky-950: #042f2e;
 }
 
 * {
@@ -134,5 +159,151 @@ select:focus {
   .animate-fade-in,
   .animate-pop-in {
     animation: none;
+  }
+}
+
+#finance-print-report {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: auto;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #finance-print-report,
+  #finance-print-report * {
+    visibility: visible !important;
+  }
+
+  #finance-print-report {
+    display: block !important;
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    color: #111 !important;
+    background: #fff !important;
+    font: 10pt/1.4 Arial, sans-serif;
+    border-top: 4px solid #0284c7;
+    padding-top: 4mm;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  #finance-print-report h1 {
+    margin: 0 0 1.5mm;
+    color: #0f172a !important;
+    font-size: 21pt;
+    letter-spacing: -0.4pt;
+  }
+
+  #finance-print-report h2 {
+    margin: 6mm 0 2mm;
+    padding-bottom: 1.5mm;
+    border-bottom: 1px solid #94a3b8;
+    color: #0f172a !important;
+    font-size: 12pt;
+    break-after: avoid;
+  }
+
+  #finance-print-report .print-subtitle,
+  #finance-print-report .print-note {
+    color: #444;
+    font-size: 8.5pt;
+  }
+
+  #finance-print-report table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 8pt;
+    font-variant-numeric: tabular-nums;
+  }
+
+  #finance-print-report th,
+  #finance-print-report td {
+    border: 1px solid #cbd5e1;
+    padding: 1.5mm 2mm;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  #finance-print-report thead th {
+    background: #eaf4fb !important;
+    color: #0f172a !important;
+    font-weight: 600;
+    letter-spacing: 0.2pt;
+  }
+
+  #finance-print-report .print-summary th:first-child {
+    width: 62%;
+  }
+
+  #finance-print-report .print-summary tbody th {
+    color: #334155 !important;
+    font-weight: 500;
+  }
+
+  #finance-print-report .print-summary tbody td {
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  #finance-print-report .print-summary tbody tr:nth-child(even) {
+    background: #f8fafc !important;
+  }
+
+  #finance-print-report .print-summary .print-total th,
+  #finance-print-report .print-summary .print-total td {
+    border-top: 2px solid #64748b;
+    font-weight: 700;
+  }
+
+  #finance-print-report .print-summary .print-apr th,
+  #finance-print-report .print-summary .print-apr td {
+    background: #eaf4fb !important;
+    color: #075985 !important;
+    font-weight: 700;
+  }
+
+  #finance-print-report .print-note {
+    margin: 2mm 0 0;
+    padding: 2mm 3mm;
+    border-left: 2px solid #0284c7;
+    background: #f8fafc !important;
+  }
+
+  #finance-print-report .print-amortization th:first-child,
+  #finance-print-report .print-amortization td:first-child {
+    width: 12%;
+    text-align: center;
+  }
+
+  #finance-print-report .print-amortization td:not(:first-child) {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  #finance-print-report .print-amortization tbody tr:nth-child(even) {
+    background: #f8fafc !important;
+  }
+
+  #finance-print-report .print-amortization thead {
+    display: table-header-group;
+  }
+
+  #finance-print-report tr {
+    break-inside: avoid;
   }
 }

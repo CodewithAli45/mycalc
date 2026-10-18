@@ -64,12 +64,12 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden pb-[calc(5.25rem+env(safe-area-inset-bottom))] sm:pb-0">
       <header className="border-b border-slate-700/40 bg-[var(--bg-0)]">
         <div className="mx-auto flex max-w-5xl justify-center px-4 py-2 sm:px-6">
           <Clock />
         </div>
-        <nav className="mx-auto max-w-5xl px-4 sm:px-6">
+        <nav className="mx-auto hidden max-w-5xl px-4 sm:block sm:px-6">
           <div className="flex gap-1 overflow-x-auto pb-2 [-webkit-overflow-scrolling:touch]">
             {TABS.map((t) => (
               <button
@@ -102,11 +102,29 @@ export default function Dashboard() {
         </nav>
       </header>
 
-      <main className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
+      <main className="mx-auto max-w-5xl px-4 py-5 sm:px-6 sm:py-6">
         <div key={tab} className="animate-fade-in">
           {render()}
         </div>
       </main>
+
+      <nav aria-label="Main navigation" className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-700/60 bg-slate-950/95 px-1 pt-2 pb-[calc(.5rem+env(safe-area-inset-bottom))] shadow-[0_-8px_24px_rgba(0,0,0,.25)] backdrop-blur sm:hidden">
+        <div className="mx-auto grid max-w-lg grid-cols-5 gap-1">
+          {TABS.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => go(t.id)}
+              className={`flex min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-1.5 text-[10px] font-medium transition ${tab === t.id ? "bg-sky-400/10 text-sky-300" : "text-slate-400 active:bg-slate-800"}`}
+              aria-current={tab === t.id ? "page" : undefined}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d={t.icon} />
+              </svg>
+              <span className="truncate">{t.label}</span>
+            </button>
+          ))}
+        </div>
+      </nav>
 
       <footer className="mx-auto max-w-5xl px-4 py-8 text-center text-xs text-slate-600 sm:px-6">
         Engineered dashboard — calculators, finance and civil tools. Installable,
